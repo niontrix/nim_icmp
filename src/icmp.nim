@@ -55,7 +55,7 @@ proc newIcmpEchoRequest(nbytes: int, nsent: uint16): EchoRequest =
   result = EchoRequest(packet: icp, length: packet_len)
 
 
-proc getIpAddress(ipOrHostname: string): IpAddress =
+proc toIpAddress(ipOrHostname: string): IpAddress =
   if not isIpAddress(ipOrHostname):
     let host = getHostByName(ipOrHostname)
     result = parseIpAddress(host.addrList[0])
@@ -88,7 +88,7 @@ proc ping(ip: IpAddress, nbytes: int): EchoResponse =
 
 
 proc pingCLI(ipOrHostname: string, nbytes: int, ntimes: int) =
-  let ipAddress = getIpAddress(ipOrHostname)
+  let ipAddress = toIpAddress(ipOrHostname)
   echo(&"PING {ipOrHostname} ({ipAddress}) {nbytes}({nbytes + 4}) bytes of data.")
 
   for i in 0..<ntimes:
