@@ -69,7 +69,7 @@ proc toIpAddress*(ipOrHostname: string): IpAddress =
     result = parseIpAddress(ipOrHostname)
 
 
-proc ping(ip: IpAddress, nbytes: int): EchoResponse =
+proc ping*(ip: IpAddress, nbytes: int): EchoResponse =
   ## Sends an ICMP Echo Request to the given IP address adding the number of
   ## bytes to the packet and eventually returns the ICMP Echo Reply packet.
 
