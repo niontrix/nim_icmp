@@ -17,9 +17,9 @@ type
     length*: int
 
   EchoResponse* = object
-    packet: array[100, uint8]
-    packet_len: int
-    time: Duration
+    packet*: array[100, uint8]
+    packet_len*: int
+    time*: Duration
 
 
 proc calculateChecksum(x: openArray[uint8]): uint16 =
